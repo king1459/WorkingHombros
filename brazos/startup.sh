@@ -6,4 +6,4 @@ docker build -t brazos .
 
 # docker run --rm -p 8888:8080 brazos
 
-docker run  -td --net cala01 --ip 203.0.113.1 brazos
+docker run  -td --net cala01 --ip 203.0.113.31 brazos
