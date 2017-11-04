@@ -29,23 +29,25 @@ RUN wget -O /usr/lib/jvm/junit-4.12.jar http://search.maven.org/remotecontent?fi
     && ln -s /usr/lib/jvm/junit-4.12.jar /usr/bin/junit-4.12.jar \
     && ln -s /usr/lib/jvm/hamcrest-core-1.3.jar /usr/bin/hamcrest-core-1.3.jar
 
-#RUN apt-get update \
-# && apt-get install -y git tree default-jdk
+RUN apt-get update \
+ && apt-get install -y tree default-jdk
 
+#RUN add user calavera
 #RUN groupadd git \
 # && groupadd calavera \
 # && useradd -b "/home/" -m -g git calavera
+RUN useradd -b "/home/" -m calavera
 
 # configure SSH
 
-#RUN mkdir -p /home/calavera/.ssh/
-#COPY files/id* /home/calavera/.ssh/
+RUN mkdir -p /home/calavera/.ssh/
+COPY files/id* /home/calavera/.ssh/
 
-#RUN chown -R calavera:calavera /home/calavera/ \
-#&& chmod -R 644 /home/calavera/.ssh
+RUN chown -R calavera:calavera /home/calavera/ \
+&& chmod -R 644 /home/calavera/.ssh
 
-#RUN cat /home/calavera/.ssh/id_rsa.pub >> /home/calavera/.ssh/authorized_keys \
-#&& chmod 600 /home/calavera/.ssh/id_rsa
+RUN cat /home/calavera/.ssh/id_rsa.pub >> /home/calavera/.ssh/authorized_keys \
+&& chmod 600 /home/calavera/.ssh/id_rsa
 
 # Move app
 
